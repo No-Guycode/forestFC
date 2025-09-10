@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest - FC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2c3e30 0%, #4a6741 100%);
+            min-height: 100vh;
+            color: #2c3e30;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            background: rgba(244, 241, 232, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(44, 62, 48, 0.2);
+            animation: slideUp 1s ease-out;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            max-width: 250px;
+            max-height: 250px;
+            width: auto;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(44, 62, 48, 0.3);
+            transition: transform 0.3s ease;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2c3e30, #4a6741);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        .content-section {
+            background: rgba(244, 241, 232, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 35px rgba(44, 62, 48, 0.15);
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #f4f1e8, #e8dcc0);
+            padding: 0.2rem 0.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #2c3e30, #4a6741);
+            color: white;
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            animation: slideUp 1s ease-out 0.6s both;
+        }
+
+        .contact-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(44, 62, 48, 0.3);
+        }
+
+        .contact-item {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-item::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #f4f1e8;
+            font-weight: bold;
+            animation: arrow-bounce 2s ease-in-out infinite;
+        }
+
+        .register-section {
+            text-align: center;
+            background: rgba(244, 241, 232, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 2.5rem;
+            animation: slideUp 1s ease-out 0.9s both;
+        }
+
+        .register-btn {
+            background: linear-gradient(135deg, #4a6741, #5a7a4f);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(74, 103, 65, 0.3);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(74, 103, 65, 0.4);
+            background: linear-gradient(135deg, #5a7a4f, #4a6741);
+        }
+
+        .register-btn:active {
+            transform: translateY(0);
+        }
+
+        .note {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #5a4a3a;
+            background: rgba(232, 220, 192, 0.5);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #4a6741;
+            animation: fadeIn 1s ease-out 1.2s both;
+        }
+
+        .note strong {
+            color: #2c3e30;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes titleGlow {
+            from {
+                text-shadow: 0 0 20px rgba(74, 103, 65, 0.3);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(74, 103, 65, 0.6);
+            }
+        }
+
+        @keyframes arrow-bounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section, .content-section, .contact-section, .register-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Background particles effect */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(244, 241, 232, 0.2);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { top: 20%; left: 20%; width: 4px; height: 4px; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 60%; left: 80%; width: 6px; height: 6px; animation-delay: 2s; }
+        .particle:nth-child(3) { top: 80%; left: 40%; width: 3px; height: 3px; animation-delay: 4s; }
+        .particle:nth-child(4) { top: 40%; left: 70%; width: 5px; height: 5px; animation-delay: 1s; }
+        .particle:nth-child(5) { top: 70%; left: 10%; width: 4px; height: 4px; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            33% { transform: translateY(-30px) rotate(120deg); opacity: 0.7; }
+            66% { transform: translateY(30px) rotate(240deg); opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <div class="hero-section">
+            <div class="logo-container">
+                <img src="forest.jpg" alt="Forest FC Logo" class="logo">
+            </div>
+            <h1 class="main-title">Forest FC</h1>
+        </div>
+
+        <div class="content-section">
+            <p class="description">Forest FC is our football club where we want <span class="highlight"><i>everyone</i></span> to reach their max potential and be the best they can.</p>
+            <p class="description">We have teams for everyone, so whether you're a beginner or an experienced player, there's a place for you at Forest FC.</p>
+            <p class="description">Join us today and be part of our football family!</p>
+        </div>
+
+        <div class="contact-section">
+            <h4 class="contact-title">Contact US:</h4>
+            <div class="contact-item">Email:</div>
+            <div class="contact-item">Whatsapp:</div>
+            <div class="contact-item">Phone:</div>
+        </div>
+
+        <div class="register-section">
+            <button class="register-btn" onclick="register()">Register</button>
+            <p class="note"><i><b>Note:</b> Forest FC is only for boys of ages 12-17</i></p>
+        </div>
+    </div>
+
+    <script>
+        function register(){
+            window.open('register.html', '_self');
+        }
+    </script>
+</body>
+</html>
